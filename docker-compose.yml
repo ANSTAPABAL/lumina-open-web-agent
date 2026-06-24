@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  lumina-chat:
+    build: .
+    container_name: lumina-chat
+    network_mode: "host"
+    volumes:
+      # Mount the host home directory so the containerized server can access the workspace files
+      - /home:/home
+    restart: unless-stopped
