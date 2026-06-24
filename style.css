@@ -1428,20 +1428,39 @@ input:checked + .slider:before {
 .action-card-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  justify-content: flex-start !important;
+  gap: 8px;
   font-weight: 700;
   font-size: 12px;
   color: var(--text-main);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   width: 100%;
+  text-align: left !important;
+}
+
+.action-card-header span {
+  margin: 0 !important;
+  text-align: left !important;
+  display: inline-block;
 }
 
 .action-card-desc {
   font-size: 12.5px;
   color: var(--text-main);
   line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  display: block;
+  transition: max-height 0.3s ease;
+}
+
+.action-card.params-expanded .action-card-desc {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
 }
 
 .action-card-params {
