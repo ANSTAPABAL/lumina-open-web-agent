@@ -1424,10 +1424,9 @@ input:checked + .slider:before {
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-left: 3px solid var(--accent-primary);
-  display: grid;
-  grid-template-columns: 1fr auto; /* Content on the left, action button on the right */
-  align-items: center; /* Center columns vertically */
-  gap: 4px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   max-width: 100%;
   cursor: pointer;
   transition: background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
@@ -1445,8 +1444,6 @@ input:checked + .slider:before {
 }
 
 .action-card-header {
-  grid-column: 1;
-  grid-row: 1;
   display: flex;
   align-items: center;
   justify-content: flex-start !important;
@@ -1468,8 +1465,6 @@ input:checked + .slider:before {
 }
 
 .action-card-desc {
-  grid-column: 1;
-  grid-row: 2;
   font-size: 12.5px;
   color: var(--text-main);
   line-height: 1.4;
@@ -1499,8 +1494,6 @@ input:checked + .slider:before {
   margin-top: 0;
   transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease, margin 0.3s ease;
   position: relative;
-  grid-column: 1 / -1; /* Spans full width of the card on row 3 */
-  grid-row: 3;
 }
 
 /* Subtle fade overlay for collapsed parameters */
@@ -1538,14 +1531,10 @@ input:checked + .slider:before {
 }
 
 .action-card-footer {
-  grid-column: 2;
-  grid-row: 1 / span 2; /* Span both header and description rows to center vertically next to them */
-  align-self: center;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: auto;
-  height: 100%;
+  width: 100%;
 }
 
 .btn-execute-action {
@@ -1567,6 +1556,7 @@ input:checked + .slider:before {
   border: none;
   flex-shrink: 0;
   box-sizing: border-box;
+  line-height: 1; /* Center vertically on two axes */
 }
 
 .btn-execute-action:hover {
