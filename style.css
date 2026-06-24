@@ -1411,7 +1411,7 @@ input:checked + .slider:before {
   flex-direction: column;
   gap: 6px;
   box-shadow: var(--glass-shadow);
-  max-width: 950px; /* Expanded width to make cards flat and less tall */
+  max-width: 720px; /* Reduced width to make cards fit better */
   width: 100%;
   align-self: flex-start; /* Prevent vertical stretching from message flex container */
   height: fit-content;
@@ -1425,9 +1425,9 @@ input:checked + .slider:before {
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-left: 3px solid var(--accent-primary);
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 6px 16px;
+  grid-template-columns: 1fr auto; /* Content on the left, action button on the right */
+  align-items: center; /* Center columns vertically */
+  gap: 4px 16px;
   max-width: 100%;
   cursor: pointer;
   transition: background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
@@ -1445,6 +1445,8 @@ input:checked + .slider:before {
 }
 
 .action-card-header {
+  grid-column: 1;
+  grid-row: 1;
   display: flex;
   align-items: center;
   justify-content: flex-start !important;
@@ -1466,12 +1468,13 @@ input:checked + .slider:before {
 }
 
 .action-card-desc {
+  grid-column: 1;
+  grid-row: 2;
   font-size: 12.5px;
   color: var(--text-main);
   line-height: 1.4;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal; /* Allow text to wrap if it exceeds width */
+  word-break: break-word;
   max-width: 100%;
   display: block;
 }
@@ -1496,7 +1499,8 @@ input:checked + .slider:before {
   margin-top: 0;
   transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease, margin 0.3s ease;
   position: relative;
-  grid-column: 1 / -1; /* Spans full width of the card */
+  grid-column: 1 / -1; /* Spans full width of the card on row 3 */
+  grid-row: 3;
 }
 
 /* Subtle fade overlay for collapsed parameters */
@@ -1534,20 +1538,24 @@ input:checked + .slider:before {
 }
 
 .action-card-footer {
+  grid-column: 2;
+  grid-row: 1 / span 2; /* Span both header and description rows to center vertically next to them */
+  align-self: center;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 100%;
+  width: auto;
+  height: 100%;
 }
 
 .btn-execute-action {
   background: var(--accent-gradient);
   color: white;
-  height: 28px; /* Fixed height for visual consistency and vertical centering */
-  padding: 0 14px;
-  border-radius: 6px;
+  height: 24px; /* Reduced height for visual consistency and vertical centering */
+  padding: 0 12px;
+  border-radius: 4px;
   font-weight: 700;
-  font-size: 11px;
+  font-size: 10px; /* Reduced font size */
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -1616,14 +1624,14 @@ input:checked + .slider:before {
 }
 
 .action-card-status {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
   flex-shrink: 0;
-  height: 28px; /* Match button height to align status nicely */
+  height: 24px; /* Match button height to align status nicely */
 }
 
 .action-card-status.success {
